@@ -65,9 +65,14 @@ contract SessionManagementTest is BaseTest {
         uint256 nonceBefore = smartSession.getNonce(permissionId, instance.account);
 
         // create enable sessions object
-        enableSessions = _makeMultiChainEnableData(permissionId, session, instance, SmartSessionMode.UNSAFE_ENABLE);
-        bytes32 hash = HashLib.multichainDigest(enableSessions.hashesAndChainIds);
+        enableSessions = _makeMultiChainEnableData(permissionId, session, instance);
 
+        bytes32 hash = HashLib.hashMultiChainSession(
+            enableSessions, instance.account, SmartSessionMode.UNSAFE_ENABLE, address(smartSession)
+        );
+
+        console2.log("hasah");
+        console2.logBytes32(hash);
         // user signs the enable hash with wallet
         enableSessions.permissionEnableSig =
             abi.encodePacked(mockK1, sign(ECDSA.toEthSignedMessageHash(hash), owner.key));
@@ -167,8 +172,12 @@ contract SessionManagementTest is BaseTest {
             actions: new ActionData[](0)
         });
 
-        enableSessions = _makeMultiChainEnableData(permissionId, session, instance, SmartSessionMode.UNSAFE_ENABLE);
-        bytes32 hash = HashLib.multichainDigest(enableSessions.hashesAndChainIds);
+        enableSessions = _makeMultiChainEnableData(permissionId, session, instance);
+        uint256 nonceBefore = smartSession.getNonce(permissionId, instance.account);
+
+        bytes32 hash = HashLib.hashMultiChainSession(
+            enableSessions, instance.account, SmartSessionMode.UNSAFE_ENABLE, address(smartSession)
+        );
         enableSessions.permissionEnableSig =
             abi.encodePacked(mockK1, sign(ECDSA.toEthSignedMessageHash(hash), owner.key));
         userOpData.userOp.signature = EncodeLib.encodeEnable(permissionId, hex"4141414142", enableSessions);
@@ -256,9 +265,11 @@ contract SessionManagementTest is BaseTest {
         uint256 nonceBefore = smartSession.getNonce(permissionId, instance.account);
 
         // create enable sessions object
-        EnableSession memory enableSessions =
-            _makeMultiChainEnableData(permissionId, session, instance, SmartSessionMode.UNSAFE_ENABLE);
-        bytes32 hash = HashLib.multichainDigest(enableSessions.hashesAndChainIds);
+        EnableSession memory enableSessions = _makeMultiChainEnableData(permissionId, session, instance);
+
+        bytes32 hash = HashLib.hashMultiChainSession(
+            enableSessions, instance.account, SmartSessionMode.UNSAFE_ENABLE, address(smartSession)
+        );
 
         // user signs the enable hash with wallet
         enableSessions.permissionEnableSig =
