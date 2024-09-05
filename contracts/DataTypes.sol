@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: AGPL-3.0-only
 pragma solidity ^0.8.25;
 
-import "./utils/AssociatedArrayLib.sol";
+import { AssociatedArrayLib } from "enumerablemap/AssociatedArrayLib.sol";
 import { IRegistry, ModuleType } from "./interfaces/IRegistry.sol";
 import "./interfaces/ISessionValidator.sol";
-import { EnumerableSet } from "./utils/EnumerableSet4337.sol";
+import { EnumerableSet } from "enumerablemap/EnumerableSet.sol";
 import { FlatBytesLib } from "@rhinestone/flatbytes/src/BytesLib.sol";
 
 /*´:°•.°+.*•´.*:˚.°*.˚•´.°:°•.°•.*•´.*:˚.°*.˚•´.°:°•.°+.*•´.*:*/

@@ -3,7 +3,7 @@ pragma solidity ^0.8.25;
 
 import "../DataTypes.sol";
 import { ISmartSession } from "../ISmartSession.sol";
-import { EnumerableSet } from "../utils/EnumerableSet4337.sol";
+import { EnumerableSet } from "enumerablemap/EnumerableSet.sol";
 import { ConfigLib } from "../lib/ConfigLib.sol";
 import { EncodeLib } from "../lib/EncodeLib.sol";
 import { PolicyLib } from "../lib/PolicyLib.sol";

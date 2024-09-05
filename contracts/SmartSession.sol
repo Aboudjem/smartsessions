@@ -20,7 +20,7 @@ import { ISmartSession } from "./ISmartSession.sol";
 import { SmartSessionBase } from "./core/SmartSessionBase.sol";
 import { SmartSessionERC7739 } from "./core/SmartSessionERC7739.sol";
 
-import { EnumerableSet } from "./utils/EnumerableSet4337.sol";
+import { EnumerableSet } from "enumerablemap/EnumerableSet.sol";
 import { ExecutionLib as ExecutionLib } from "./lib/ExecutionLib.sol";
 import { IUserOpPolicy, IActionPolicy } from "./interfaces/IPolicy.sol";
 import { PolicyLib } from "./lib/PolicyLib.sol";
@@ -157,7 +157,8 @@ contract SmartSession is ISmartSession, SmartSessionBase, SmartSessionERC7739 {
 
         // require signature on account
         // this is critical as it is the only way to ensure that the user is aware of the policies and signer
-        // NOTE: although SmartSession implements a ERC-1271 feature, it CAN NOT be used as a valid ERC-1271 validator for
+        // NOTE: although SmartSession implements a ERC-1271 feature, it CAN NOT be used as a valid ERC-1271 validator
+        // for
         // this step. SmartSessions ERC1271 function must prevent this
         if (IERC1271(account).isValidSignature(hash, enableData.permissionEnableSig) != EIP1271_MAGIC_VALUE) {
             revert InvalidEnableSignature(account, hash);

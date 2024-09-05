@@ -4,11 +4,11 @@ pragma solidity ^0.8.25;
 import "../DataTypes.sol";
 import { IPolicy, IUserOpPolicy, IActionPolicy, I1271Policy } from "../interfaces/IPolicy.sol";
 import { ISmartSession } from "../ISmartSession.sol";
-import { AssociatedArrayLib } from "../utils/AssociatedArrayLib.sol";
+import { AssociatedArrayLib } from "enumerablemap/AssociatedArrayLib.sol";
 import { IRegistry, ModuleType } from "../interfaces/IRegistry.sol";
 import { IdLib } from "./IdLib.sol";
 import { HashLib } from "./HashLib.sol";
-import { EnumerableSet } from "../utils/EnumerableSet4337.sol";
+import { EnumerableSet } from "enumerablemap/EnumerableSet.sol";
 
 library ConfigLib {
     using FlatBytesLib for FlatBytesLib.Bytes;

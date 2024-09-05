@@ -5,7 +5,7 @@ import "../DataTypes.sol";
 import { ISmartSession } from "../ISmartSession.sol";
 import { IPolicy } from "../interfaces/IPolicy.sol";
 import { PackedUserOperation } from "modulekit/external/ERC4337.sol";
-import { AssociatedArrayLib } from "../utils/AssociatedArrayLib.sol";
+import { AssociatedArrayLib } from "enumerablemap/AssociatedArrayLib.sol";
 
 import { Execution, ExecutionLib as ExecutionLib } from "./ExecutionLib.sol";
 import { CallType, CALLTYPE_DELEGATECALL, EXECTYPE_DEFAULT, EXECTYPE_TRY } from "erc7579/lib/ModeLib.sol";
@@ -16,7 +16,7 @@ import { IActionPolicy, I1271Policy } from "../interfaces/IPolicy.sol";
 import { IdLib } from "./IdLib.sol";
 
 import { IERC7579Account } from "erc7579/interfaces/IERC7579Account.sol";
-import { EnumerableSet } from "../utils/EnumerableSet4337.sol";
+import { EnumerableSet } from "enumerablemap/EnumerableSet.sol";
 
 library PolicyLib {
     using EnumerableSet for EnumerableSet.AddressSet;

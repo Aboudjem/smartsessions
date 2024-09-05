@@ -4,7 +4,7 @@ pragma solidity ^0.8.23;
 
 import "contracts/interfaces/IPolicy.sol";
 import "contracts/lib/SubModuleLib.sol";
-import "../../utils/EnumerableSet4337.sol";
+import { EnumerableSet } from "enumerablemap/EnumerableSet.sol";
 
 contract YesPolicy is IUserOpPolicy, IActionPolicy, I1271Policy {
     using EnumerableSet for EnumerableSet.Bytes32Set;
